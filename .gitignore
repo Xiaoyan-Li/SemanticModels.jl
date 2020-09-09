@@ -277,3 +277,13 @@ examples/*.dot
 examples/*.dot.svg
 doc/src/img/petri/*.png
 /doc/workflow.slides.html
+/examples/petri/covid/img/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/

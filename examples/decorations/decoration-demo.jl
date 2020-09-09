@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*-
 # + {}
 using SemanticModels
-using SemanticModels.ModelTools.PetriModels
-using SemanticModels.ModelTools.RelOlogModels
-using SemanticModels.ModelTools.CategoryTheory
+using SemanticModels.CategoryTheory
+using SemanticModels.PetriModels
+using SemanticModels.RelOlogModels
 using ModelingToolkit
 using Petri
 using Catlab
 using Catlab.Doctrines
 import TikzPictures
 import Catlab.Graphics: to_tikz
+import Catlab.Doctrines: ⊗
 
 import MacroTools: postwalk
 function devar(p::Petri.Model)
@@ -45,7 +46,7 @@ Petri.Graph(devar(sir_petri))
     S::Ob
     I::Ob
     R::Ob
-    
+
     infects::Hom(I, S)
     recovers_to::Hom(I, R)
 end
@@ -68,7 +69,7 @@ Petri.Graph(devar(sii_petri))
     S::Ob
     I::Ob
     I_p::Ob
-    
+
     infects::Hom(I, S)
     infects_p::Hom(I_p, S)
 end
@@ -98,7 +99,7 @@ dec_g = Decorated(g, [sir_petriModel, sir_relModel])
 
 # +
 
-S = Span(dec_f, dec_f)
+S = Span(dec_f, dec_g)
 
 
 H = CategoryTheory.pushout(S)
